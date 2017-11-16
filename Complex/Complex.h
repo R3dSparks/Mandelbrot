@@ -18,9 +18,9 @@ public:
 	void set_real(double);
 	void set_imaginary(double);
 
-	// Properties
-
 	// Methods
+
+	double getLength() const;
 
 private:
 	// Properties

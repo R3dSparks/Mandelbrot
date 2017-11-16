@@ -6,22 +6,29 @@ class MandelbrotLogic
 public:
 	// Constructor
 
-	MandelbrotLogic();
+	MandelbrotLogic(int, int);
 	~MandelbrotLogic();
 
 	// Properties
 
 	// Methods
 
-	int IsPixelInsideMandelbrotSet(Complex);
+	int GetRGB(int value, int max_value);
 
-	void RunMandelbrotAlgorithm(int x, int y);
+	int IsNumInsideMandelbrotSet(const Complex);
+
+	int RunMandelbrotAlgorithm(int, int);
 
 private:
 
-	double scaling_;
-	double origin_x_;
-	double origin_y_;
+	double scaling_ = 0.005;
+	double origin_x_ = 0.5;
+	double origin_y_ = 0;
+	int total_pixel_width_;
+	int total_pixel_height_;
+
+	int divergence_threshhold_ = 500;
+	int max_iterations_ = 200;
 
 };
 

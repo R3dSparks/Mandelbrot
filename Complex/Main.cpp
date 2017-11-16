@@ -1,57 +1,34 @@
 #include <iostream>
-#include "Complex.h"
-#include <windows.h>
+#include "BMP.h"
+#include "MandelbrotLogic.h"
+#include "Bitmap.h"
 
 int main()
 {
+	int height = 100*4;
+	int width = 150*4;
+	int size = height * width * 3;
 
-}
+	MandelbrotLogic mbl = MandelbrotLogic(width, height);
 
-bool SaveBitmap(BYTE* Buffer, int width, int height, long paddedsize, LPCTSTR bmpfile)
-{
-	BITMAPFILEHEADER bmfh;
-	BITMAPINFOHEADER info;
-	memset(&bmfh, 0, sizeof(BITMAPFILEHEADER));
-	memset(&info, 0, sizeof(BITMAPINFOHEADER));
+	Bitmap bmp = Bitmap(width, height);
 
-	bmfh.bfType = 0x4d42; // 0x4d4s = 'BM'
-	bmfh.bfReserved1 = 0;
-	bmfh.bfReserved2 = 0;
-	bmfh.bfSize = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + paddedsize;
-	bmfh.bfOffBits = 0x36;
-
-	info.biSize = sizeof(BITMAPINFOHEADER);
-	info.biWidth = width;
-	info.biHeight = height;
-	info.biPlanes = 1;
-	info.biBitCount = 24;
-	info.biCompression = BI_RGB;
-	info.biSizeImage = 0;
-	info.biXPelsPerMeter = 0x0ec4;
-	info.biYPelsPerMeter = 0x0ec4;
-	info.biClrUsed = 0;
-	info.biClrImportant = 0;
-
-	HANDLE file = CreateFile(bmpfile, GENERIC_WRITE, FILE_SHARE_READ,
-		NULL, CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-	if (NULL == file)
+	for (int x = 0; x < width; x++)
 	{
-		CloseHandle(file);
-		return false;
+		for (int y = 0; y < height; y++)
+		{
+			if (mbl.RunMandelbrotAlgorithm(x, y) == false)
+			{
+				bmp.setPixelRGB(x, y, 0x000000);
+			}
+			else
+			{
+				bmp.setPixelRGB(x, y, 0xffffff);
+			}
+		}
 	}
 
-	unsigned long bwritten;
-	if (WriteFile(file, &bmfh, sizeof(BITMAPFILEHEADER),
-		&bwritten, NULL) == false)
-	{
-		CloseHandle(file);
-		return false;
-	}
 
-	if (WriteFile(file, &info, sizeof(BITMAPINFOHEADER),
-		&bwritten, NULL) == false)
-	{
-		CloseHandle(file);
-		return false;
-	}
+	SaveBMP(bmp.get_image_data(), width, height, size, "testBmp.bmp");
+
 }

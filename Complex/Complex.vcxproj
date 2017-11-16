@@ -111,11 +111,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="BMP.cpp" />
     <ClCompile Include="Complex.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MandelbrotLogic.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="BMP.h" />
     <ClInclude Include="Complex.h" />
     <ClInclude Include="MandelbrotLogic.h" />
   </ItemGroup>

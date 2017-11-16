@@ -37,6 +37,13 @@ void Complex::set_imaginary(double imaginary)
 	this->imaginary_ = imaginary;
 }
 
+// Methods
+
+double Complex::getLength() const
+{
+	return sqrt(this->real_ * this->real_ + this->imaginary_ * this->imaginary_);
+}
+
 // Operator
 
 Complex operator+(const Complex &a, const Complex &b)
@@ -71,7 +78,7 @@ Complex operator/(const Complex &a, const Complex &b)
 {
 	double real = (a.get_real() * b.get_real() + a.get_imaginary() * b.get_imaginary())
 		/ (a.get_imaginary() * a.get_imaginary() + b.get_imaginary() * b.get_imaginary());
-	double imaginary = (a.get_imaginary * b.get_real() - a.get_real() * b.get_imaginary())
+	double imaginary = (a.get_imaginary() * b.get_real() - a.get_real() * b.get_imaginary())
 		/ (a.get_imaginary() * a.get_imaginary() + b.get_imaginary() * b.get_imaginary());
 
 	return Complex(real, imaginary);
