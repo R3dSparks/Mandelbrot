@@ -2,10 +2,13 @@
 
 
 
-MandelbrotLogic::MandelbrotLogic(int width, int height)
+MandelbrotLogic::MandelbrotLogic(int width, int height, double scale, int iterations, int threshold)
 {
 	this->total_pixel_width_ = width;
 	this->total_pixel_height_ = height;
+	this->scaling_ = scale;
+	this->max_iterations_ = iterations;
+	this->divergence_threshhold_ = threshold;
 }
 
 

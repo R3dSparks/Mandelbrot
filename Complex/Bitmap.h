@@ -8,6 +8,7 @@ public:
 	~Bitmap();
 
 	BYTE* get_image_data();
+	int get_size();
 
 	int getPixelRGB(int, int);
 	void setPixelRGB(int, int, int);

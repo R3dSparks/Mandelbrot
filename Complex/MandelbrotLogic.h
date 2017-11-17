@@ -6,7 +6,7 @@ class MandelbrotLogic
 public:
 	// Constructor
 
-	MandelbrotLogic(int, int);
+	MandelbrotLogic(int, int, double, int, int);
 	~MandelbrotLogic();
 
 	// Properties

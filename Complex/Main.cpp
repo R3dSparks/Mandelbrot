@@ -5,11 +5,12 @@
 
 int main()
 {
-	int height = 100*4;
-	int width = 150*4;
-	int size = height * width * 3;
+	int height = 7;
+	int width = 7;
+	int percentage = 0;
+	int last_percentage = -1;
 
-	MandelbrotLogic mbl = MandelbrotLogic(width, height);
+	MandelbrotLogic mbl = MandelbrotLogic(width, height, 0.001, 100, 1000);
 
 	Bitmap bmp = Bitmap(width, height);
 
@@ -26,9 +27,16 @@ int main()
 				bmp.setPixelRGB(x, y, 0xffffff);
 			}
 		}
+		
+		percentage = (int)((x / (double)width) * 100);
+
+		if (percentage > last_percentage)
+		{
+			std::cout << percentage << "%" << std::endl;
+			last_percentage = percentage;
+		}
 	}
 
-
-	SaveBMP(bmp.get_image_data(), width, height, size, "testBmp.bmp");
+	SaveBMP(bmp.get_image_data(), width, height, bmp.get_size(), "testBmp.bmp");
 
 }

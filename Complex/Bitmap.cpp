@@ -7,6 +7,7 @@ Bitmap::Bitmap(int width, int height)
 	this->width_ = width;
 	this->height_ = height;
 	this->size_ = width * height * 3; // Number of pixels times 3 byte per pixel
+	this->size_ = this->size_ + 4 - this->size_ % 4;
 	this->image_data_ = (BYTE*)malloc(this->size_);
 }
 
@@ -19,6 +20,11 @@ Bitmap::~Bitmap()
 BYTE * Bitmap::get_image_data()
 {
 	return this->image_data_;
+}
+
+int Bitmap::get_size()
+{
+	return this->size_;
 }
 
 int Bitmap::getPixelRGB(int x, int y)
