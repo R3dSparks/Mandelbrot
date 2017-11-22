@@ -19,5 +19,9 @@ private:
 	int size_;
 	BYTE* image_data_;
 
+	int padded_width_;
+
+	BYTE* get_pixel(int, int);
+
 };
 
