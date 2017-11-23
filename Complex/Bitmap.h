@@ -4,6 +4,7 @@
 class Bitmap
 {
 public:
+	Bitmap();
 	Bitmap(int, int);
 	~Bitmap();
 

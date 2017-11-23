@@ -2,6 +2,10 @@
 
 
 
+MandelbrotLogic::MandelbrotLogic()
+{
+}
+
 MandelbrotLogic::MandelbrotLogic(int width, int height, double scale, int iterations, int threshold)
 {
 	this->total_pixel_width_ = width;

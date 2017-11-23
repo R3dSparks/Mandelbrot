@@ -2,6 +2,10 @@
 
 
 
+Bitmap::Bitmap()
+{
+}
+
 Bitmap::Bitmap(int width, int height)
 {
 	this->width_ = width;

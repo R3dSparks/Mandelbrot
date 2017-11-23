@@ -23,6 +23,7 @@
     <ProjectGuid>{F18EC34C-1494-4B3D-8BBE-32CA5569C79E}</ProjectGuid>
     <RootNamespace>Complex</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectName>Mandelbrot</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -115,12 +116,14 @@
     <ClCompile Include="BMP.cpp" />
     <ClCompile Include="Complex.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Mandelbrot.cpp" />
     <ClCompile Include="MandelbrotLogic.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="BMP.h" />
     <ClInclude Include="Complex.h" />
+    <ClInclude Include="Mandelbrot.h" />
     <ClInclude Include="MandelbrotLogic.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
